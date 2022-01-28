@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/abdelouadoudborji/MerkleTreejs/issues"
   },
-  "homepage": "https://github.com/abdelouadoudborji/MerkleTreejs#readme"
+  "homepage": "https://github.com/abdelouadoudborji/MerkleTreejs#readme",
+  "dependencies": {
+    "keccak256": "^1.0.6",
+    "merkletreejs": "^0.2.27"
+  }
 }
