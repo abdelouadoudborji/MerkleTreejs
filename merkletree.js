@@ -30,3 +30,5 @@ console.log(hexproof.toString());
 app.get('/',(req,res)=>{
     res.send(hexproof.toString());
 })
+
+app.listen(3000, ()=>console.log('test'));
