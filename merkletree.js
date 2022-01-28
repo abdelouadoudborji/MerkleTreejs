@@ -1,5 +1,8 @@
 const {MerkleTree} =require('merkletreejs');
 const keccak256 =require('keccak256');
+const express= require('express');
+const { append } = require('express/lib/response');
+const app =express();
 
 let whitelistaddresses=[
     "0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2",
@@ -17,7 +20,6 @@ const merkleTree= new MerkleTree(leafNodes,keccak256,{sortPairs: true});
 const rootHash=merkleTree.getRoot();
 console.log(merkleTree.toString());
 console.log(rootHash.toString('hex'));
-
 //hexproof
 console.log('claiming address');
 console.log(leafNodes[2].toString('hex'));
@@ -25,3 +27,6 @@ const hexproof=merkleTree.getHexProof(leafNodes[2]);
 
 console.log(hexproof.toString());
 
+app.get('/',(req,res)=>{
+    res.send(hexproof.toString());
+})
