@@ -31,6 +31,3 @@ app.get('/',(req,res)=>{
     res.send(hexproof.toString());
 })
 
-const server =app.listen(0, () => {
-    console.log('Listening on port:', server.address().port);
-  });
