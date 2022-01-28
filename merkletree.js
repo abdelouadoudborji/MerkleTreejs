@@ -17,17 +17,9 @@ let whitelistaddresses=[
 
 const leafNodes=whitelistaddresses.map(addr=> keccak256(addr));
 const merkleTree= new MerkleTree(leafNodes,keccak256,{sortPairs: true});
-const rootHash=merkleTree.getRoot();
-console.log(merkleTree.toString());
-console.log(rootHash.toString('hex'));
-//hexproof
-console.log('claiming address');
-console.log(leafNodes[2].toString('hex'));
-const hexproof=merkleTree.getHexProof(leafNodes[2]);
 
-console.log(hexproof.toString());
-
-app.get('/',(req,res)=>{
-    res.send(hexproof.toString());
+app.get('/getproof/:addr',(req,res)=>{
+    const claimingaddress=keccak256(req.params.addr).toString('hex');
+    res.send(merkleTree.getHexProof(claimingaddress));
 })
-
+app.listen(3000, ()=> console.log('running ...'));
