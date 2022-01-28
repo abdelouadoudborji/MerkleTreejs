@@ -23,5 +23,9 @@ app.get('/getproof/:addr',(req,res)=>{
     const claimingaddress=keccak256(req.params.addr).toString('hex');
     res.send(merkleTree.getHexProof(claimingaddress));
 });
+app.get('/',(req,res)=>{
+   
+   res.send(merkleTree.getHexRoot());
+});
 const port= process.env.PORT || 3000;
 app.listen(port, ()=> console.log('running ...'));
