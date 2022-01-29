@@ -20,6 +20,7 @@
   "dependencies": {
     "express": "^4.17.2",
     "keccak256": "^1.0.6",
-    "merkletreejs": "^0.2.27"
+    "merkletreejs": "^0.2.27",
+    "standard-api-response": "^0.2.0"
   }
 }
