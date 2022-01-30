@@ -18,7 +18,9 @@ let whitelistaddresses=[
 const leafNodes=whitelistaddresses.map(addr=> keccak256(addr));
 const merkleTree= new MerkleTree(leafNodes,keccak256,{sortPairs: true});
 app.use(express.json());
-
+app.use(cors({
+    origin: '*'
+}));
 app.get('/getproof/:addr',(req,res)=>{
     const claimingaddress=keccak256(req.params.addr).toString('hex');
     res.send(merkleTree.getHexProof(claimingaddress));
@@ -28,4 +30,4 @@ app.get('/',(req,res)=>{
    res.send(merkleTree.getHexRoot());
 });
 const port= process.env.PORT || 3000;
-app.listen(port, ()=> console.log('running ...'));
+app.listen(port, ()=> console.log('running ...'))
