@@ -3,6 +3,7 @@ const keccak256 =require('keccak256');
 const express= require('express');
 const { append } = require('express/lib/response');
 const app =express();
+var cors = require('cors')
 
 let whitelistaddresses=[
     "0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2",
